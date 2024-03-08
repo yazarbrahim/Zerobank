@@ -1,0 +1,15 @@
+/Users/banu/IdeaProjects/zerobankautomation/src/test/java/com/zerobank/pages/AccountSummaryPage.java
+/Users/banu/IdeaProjects/zerobankautomation/src/test/java/com/zerobank/runners/CukesRunner.java
+/Users/banu/IdeaProjects/zerobankautomation/src/test/java/com/zerobank/stepdefinitions/PayBillsStepDefinitions.java
+/Users/banu/IdeaProjects/zerobankautomation/src/test/java/com/zerobank/stepdefinitions/Hook.java
+/Users/banu/IdeaProjects/zerobankautomation/src/test/java/com/zerobank/pages/PayBillsPage.java
+/Users/banu/IdeaProjects/zerobankautomation/src/test/java/com/zerobank/stepdefinitions/AccountActivityPageStepDefinition.java
+/Users/banu/IdeaProjects/zerobankautomation/src/test/java/com/zerobank/stepdefinitions/LoginStepDefinitions.java
+/Users/banu/IdeaProjects/zerobankautomation/src/test/java/com/zerobank/utilities/Driver.java
+/Users/banu/IdeaProjects/zerobankautomation/src/test/java/com/zerobank/utilities/BrowserUtils.java
+/Users/banu/IdeaProjects/zerobankautomation/src/test/java/com/zerobank/pages/AccountActivityPage.java
+/Users/banu/IdeaProjects/zerobankautomation/src/test/java/com/zerobank/utilities/ConfigurationReader.java
+/Users/banu/IdeaProjects/zerobankautomation/src/test/java/com/zerobank/stepdefinitions/AccountSummaryStepDefinitions.java
+/Users/banu/IdeaProjects/zerobankautomation/src/test/java/com/zerobank/reviewCode/PropertiesExample.java
+/Users/banu/IdeaProjects/zerobankautomation/src/test/java/com/zerobank/pages/BasePage.java
+/Users/banu/IdeaProjects/zerobankautomation/src/test/java/com/zerobank/pages/LoginPage.java
