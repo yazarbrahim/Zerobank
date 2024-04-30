@@ -1,0 +1,18 @@
+url = http://zero.webappsecurity.com/
+
+username: username
+password: password
+
+Login
+LoginOnly	authorized	users	should	be	able	to	login	to	the	application.
+When	user	logsin	with	valid	credentials,	Account	summary	page	should	be	displayed.
+
+Users	with	wrong	username	or	wrong	password	should	not	be	able	to	login.
+Users	with	blank	username	or	password	should	also	not	be	able	to	login.
+When	user	tries	to	login	with	invalid	information,	error	message	Login	and/or	password	are	wrong.
+should	be	displayed
+
+Account summary
+Account summary page should have the title Zero – Account summary.
+Account summary page should have to following account types: Cash Accounts, Investment Accounts, Credit Accounts, Loan Accounts.
+Credit Accounts table must have columns Account, Credit Card and Balance.

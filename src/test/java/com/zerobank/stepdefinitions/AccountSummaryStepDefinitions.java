@@ -1,19 +1,20 @@
 package com.zerobank.stepdefinitions;
-
-import com.zerobank.pages.AccountActivityPage;
 import com.zerobank.pages.AccountSummaryPage;
 import com.zerobank.utilities.BrowserUtils;
-import com.zerobank.utilities.Driver;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.WebElement;
-
 import java.util.List;
 
 
 public class AccountSummaryStepDefinitions {
 
     AccountSummaryPage accountSummaryPage = new AccountSummaryPage();
+
+    @When("User click the Account Summary submodule")
+    public void user_click_the_Account_summary_submodule() {
+        accountSummaryPage.AccountSummaryLinkClick();
+    }
 
     @Then("User Should see {string}, {string}, {string}, {string}")
     public void user_Should_see(String string, String string2, String string3, String string4) {
@@ -40,20 +41,5 @@ public class AccountSummaryStepDefinitions {
         accountSummaryPage.waitUntilLoaderMaskDisappear();
         Assert.assertEquals(dataTable, accountSummaryPage.getAccountTablesColumns());
     }
-
-//    @Then("Account tables must have {string} displayed on the columns")
-//    public void account_tables_must_have_displayed_on_the_columns(String string) {
-//        System.out.println("Account table columns are: " + string);
-//        accountSummaryPage.waitUntilLoaderMaskDisappear();
-//       // Assert.assertEquals(string, accountSummaryPage.getAccountTablesColumns());
-//
-//        System.out.println("Account table columns are: "+ string);
-//        List<String> names = accountSummaryPage.getAccountTablesColumns();
-//        System.out.println(names + "3444");
-//        accountSummaryPage.waitUntilLoaderMaskDisappear();
-//        Assert.assertEquals(string, names);
-//        System.out.println(names + "3444");
-//
-//    }
 
 }

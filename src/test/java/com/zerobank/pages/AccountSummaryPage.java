@@ -4,13 +4,14 @@ import com.zerobank.utilities.BrowserUtils;
 import com.zerobank.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
 import java.util.List;
 
 public class AccountSummaryPage extends BasePage {
 
     @FindBy(xpath = "//*[text() = 'Cash Accounts']")
     public WebElement CashAccountsElement;
+    @FindBy(xpath = "//*[text() = 'Account Summary']")
+    public WebElement AccountSummaryElement;
 
     @FindBy(xpath = "//*[text() = 'Investment Accounts']")
     public WebElement InvestmentAccountsElemenent;
@@ -30,20 +31,19 @@ public class AccountSummaryPage extends BasePage {
     public void pageTitle() {
         Driver.get().getTitle();
     }
+    public void AccountSummaryLinkClick() {
+        AccountSummaryElement.click();
+    }
 
     public void accountTypes() {
-
         String CashAccountsText = CashAccountsElement.getText();
         String InvestmentAccountsText = InvestmentAccountsElemenent.getText();
         String CreditAccountsText = CreditAccountsElement.getText();
         String LoanAccountsText = LoanAccountsElement.getText();
-
     }
 
-    // this methos if for get the names of string and we are call the browser utills class
     public List<String> getAccountTypesNames() {
         return BrowserUtils.getListOfString(accountTypes);
-
     }
 
     public List<String> getAccountTablesColumns() {

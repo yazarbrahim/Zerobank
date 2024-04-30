@@ -14,9 +14,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class BasePage {
 
     public BasePage() {  // first create this method
-        //this method requires to provide webdriver object for @FindBy
-        //and page class
-        //this means this page class
         PageFactory.initElements(Driver.get(), this);
     }
 
@@ -86,35 +83,7 @@ public class BasePage {
     /**
      * @return page name, for example: Dashboard
      */
-//    public String getPageSubTitle() {
-//        //ant time we are verifying page name, or page subtitle, loader mask appears
-//        waitUntilLoaderMaskDisappear();
-//        BrowserUtils.waitForStaleElement(pageSubTitle);
-//        return pageSubTitle.getText();
-//    }
-//        /*
-//        String pageSubTitle = pageSubTitle.getText();
-//        return pageSubTitle;
-//        */
-//
-//
-//    public String getUserName() {
-//        waitUntilLoaderMaskDisappear();
-//        BrowserUtils.waitForVisibility(userName, 5);
-//        return userName.getText();
-//    }
-//
-//    public void logOut() {
-//        BrowserUtils.wait(2);
-//        BrowserUtils.clickWithJS(userName);
-//        BrowserUtils.clickWithJS(logOutLink);
-//    }
-//
-//    public void goToMyUser() {
-//        waitUntilLoaderMaskDisappear();
-//        BrowserUtils.waitForClickablility(userName, 5).click();
-//        BrowserUtils.waitForClickablility(myUser, 5).click();
-//    }
+
     public void waitForPageSubTitle(String pageSubtitleText) {
         new WebDriverWait(Driver.get(), 10).until(ExpectedConditions.textToBe(By.cssSelector("h1[class='oro-subtitle']"), pageSubtitleText));
     }

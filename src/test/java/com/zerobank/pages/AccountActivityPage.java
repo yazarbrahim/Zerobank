@@ -8,7 +8,10 @@ import org.openqa.selenium.support.ui.Select;
 
 public class AccountActivityPage extends BasePage {
 
-    @FindBy(linkText = "Account Activity")
+    @FindBy(xpath = "//*[@id='onlineBankingMenu']/div/strong")
+    public WebElement OnlineBankingElement;
+
+    @FindBy(xpath = "//span [@ id='account_activity_link']")
     public WebElement accountActivityElement;
 
     @FindBy(id = "aa_accountId")
@@ -25,6 +28,9 @@ public class AccountActivityPage extends BasePage {
         return new Select(list);
     }
 
+    public void OnlineBankingElement() {
+        OnlineBankingElement.click();
+    }
     public void AccountActivityLinkClick() {
         accountActivityElement.click();
     }
@@ -32,14 +38,5 @@ public class AccountActivityPage extends BasePage {
     public void AccountActivityTitle() {
         String title = Driver.get().getTitle();
     }
-
-//    public void DefaultSavings(){
-//        Select select = new Select(SelectElement);
-//        select.selectByValue("1");
-//
-//
-//
-//    }
-
 
 }

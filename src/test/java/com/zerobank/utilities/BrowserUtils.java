@@ -1,11 +1,12 @@
 package com.zerobank.utilities;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
-
+import org.openqa.selenium.WebDriver;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -27,6 +28,10 @@ public class BrowserUtils {
         }
     }
 
+    public static void back (){
+        WebDriver driver = null;
+        driver.navigate().back();
+    }
     /**
      * Waits for element to be not stale
      * implicit wait
@@ -111,7 +116,6 @@ public class BrowserUtils {
         String target2 = System.getProperty("user.dir") + "/test-output/Screenshots/" + name + ".png";
 
         File finalDestination = new File(target);
-        // save the screenshot to the path given
         try {
             FileUtils.copyFile(source, finalDestination);
         } catch (IOException e) {
@@ -120,7 +124,6 @@ public class BrowserUtils {
         return target;
     }
 
-    // day 26 added
     /**
      * Wait 15 seconds with polling interval of 200 milliseconds then click
      *day 26 addeddddd
@@ -145,16 +148,9 @@ public class BrowserUtils {
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }
-            // element.click();   // click again
         }
     }
 
-    //  // day 26 added  video 16:16
-    /**
-     * waits for backgrounds processes on the browser to complete
-     *day 26 addeddddd
-     * @param timeOutInSeconds
-     */
     public static void waitForPageToLoad(long timeOutInSeconds) {  // it is using Java scrip excecuter
         ExpectedCondition<Boolean> expectation = driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
         try {
@@ -165,7 +161,6 @@ public class BrowserUtils {
         }
     }
 
-    // day 26 added
     /**
      * Wait for proper page title
      *day 26 addeddddd
@@ -186,8 +181,6 @@ public class BrowserUtils {
         List<String> listOfStrings = new ArrayList<>();
         for (WebElement element : listOfWebElements) {
             String value = element.getText().trim();
-            //if there is no text
-            //do not add this blank text into list
             if (value.length() > 0) {
                 listOfStrings.add(value);
             }
@@ -260,12 +253,5 @@ public class BrowserUtils {
         new Actions(Driver.get()).doubleClick(element).build().perform();
     }
 
-
 }
-
-
-//    public static void main(String[] args) {
-//        String target = System.getProperty("user.dir");
-//    }
-//}
 
