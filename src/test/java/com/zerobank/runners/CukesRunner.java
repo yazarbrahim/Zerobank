@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "com/zerobank/stepdefinitions",
         dryRun = false,
-        tags = "@account_types2",
+//        tags = "@account_activity",
         plugin = {"html:target/cucumber/report.html", "json:target/cucumber/report.json"}   // create the report
 )
 

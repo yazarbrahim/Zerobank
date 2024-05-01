@@ -1,7 +1,6 @@
 package com.zerobank.stepdefinitions;
 
 import com.zerobank.utilities.Driver;
-//import io.cucumber.core.api.Scenario;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -21,15 +20,15 @@ public class Hook {
         //if test failed - do this
         if (scenario.isFailed()) {
             System.out.println("Test failed!");
-            byte[] screenshot = ((TakesScreenshot) Driver.get()).getScreenshotAs(OutputType.BYTES);
-//            scenario.embed(screenshot, "image/png");
+            final byte[] screenshot = ((TakesScreenshot) Driver.get()).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshot, "image/png", "screenshot");
         } else {
+            final byte[] screenshot = ((TakesScreenshot) Driver.get()).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshot, "image/png", "screenshot");
             System.out.println("Cleanup!");
             System.out.println("Test completed!");
         }
-        //after every test, we gonna close browser
         Driver.close();
-
     }
 
 }

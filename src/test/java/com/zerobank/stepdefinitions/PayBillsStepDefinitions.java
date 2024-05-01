@@ -1,5 +1,4 @@
 package com.zerobank.stepdefinitions;
-
 import com.zerobank.pages.PayBillsPage;
 import com.zerobank.utilities.BrowserUtils;
 import com.zerobank.utilities.ConfigurationReader;
@@ -7,8 +6,6 @@ import com.zerobank.utilities.Driver;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-
 import java.util.concurrent.TimeUnit;
 
 public class PayBillsStepDefinitions {
@@ -20,7 +17,6 @@ public class PayBillsStepDefinitions {
         Driver.get().manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         payBillsPage.payBillsElement.click();
     }
-
 
     @Then("Page Title should be {string}")
     public void page_Title_should_be(String string) {
@@ -71,7 +67,6 @@ public class PayBillsStepDefinitions {
 
     @When("{string} displayed")
     public void displayed(String string) {
-        // String actualMessag = payBillsPage.messageDisplayed();
         String message = payBillsPage.messageDisplayed();
         Assert.assertEquals(string, message);
         Assert.assertEquals(string, payBillsPage.messageDisplayed());
@@ -90,15 +85,12 @@ public class PayBillsStepDefinitions {
 
     @When("{string} message displayed")
     public void message_displayed(String string) {
-//        String amountMessage =  Driver.get().findElement(By.id("sp_amount")).getAttribute("validationMessage");
-//        Assert.assertEquals(string, amountMessage);
         Assert.assertEquals(string, payBillsPage.amountWarningMessage());
 
     }
 
     @Then("User left the date box empty")
     public void user_left_the_date_box_empty() {
-        // payBillsPage.dateElement.sendKeys("");
         payBillsPage.enterDate("");
         BrowserUtils.waitForPageToLoad(10);
     }
@@ -110,6 +102,5 @@ public class PayBillsStepDefinitions {
         System.out.println("Actual is: " + dateMessage);
         Assert.assertEquals(string, payBillsPage.dateWarningMessage());
     }
-
 
 }

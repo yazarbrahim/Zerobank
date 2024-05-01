@@ -57,24 +57,16 @@ public class BrowserUtils {
         }
     }
 
-    /**
-     * Waits for the provided element to be visible on the page
-     */
     public static WebElement waitForVisibility(WebElement element, int timeToWaitInSec) {
         WebDriverWait wait = new WebDriverWait(Driver.get(), timeToWaitInSec);
         return wait.until(ExpectedConditions.visibilityOf(element));
     }
 
-    /**
-     * Clicks on an element using JavaScript
-     */
     public static void clickWithJS(WebElement element) {
         ((JavascriptExecutor) Driver.get()).executeScript("arguments[0].scrollIntoView(true);", element);
         ((JavascriptExecutor) Driver.get()).executeScript("arguments[0].click();", element);
     }
 
-    /* Waits for provided element to be clickable
-     */
     public static WebElement waitForClickablility(WebElement element, int timeout) {
         WebDriverWait wait = new WebDriverWait(Driver.get(), timeout);
         return wait.until(ExpectedConditions.elementToBeClickable(element));
@@ -96,7 +88,7 @@ public class BrowserUtils {
         return target;
     }
 
-    public static void clickWithWait(WebElement webElement) {  // day 26 ideo 15:00  fluen twait is a
+    public static void clickWithWait(WebElement webElement) {
         Wait wait = new FluentWait<>(Driver.get())
                 .withTimeout(Duration.ofSeconds(15))
                 .pollingEvery(Duration.ofMillis(200))
@@ -106,19 +98,19 @@ public class BrowserUtils {
                 .ignoring(StaleElementReferenceException.class)
                 .ignoring(WebDriverException.class);
         WebElement element = (WebElement) wait.until((Function<WebDriver, WebElement>) driver -> webElement);
-        try {  // all all up conditions are met click and than if click fail for some reson it will wait
+        try {
             element.click();
         } catch (WebDriverException e) {
             System.out.println(e.getMessage());
             try {
-                Thread.sleep(1000);  // one second and recover that failer and than click again
+                Thread.sleep(1000);
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }
         }
     }
 
-    public static void waitForPageToLoad(long timeOutInSeconds) {  // it is using Java scrip excecuter
+    public static void waitForPageToLoad(long timeOutInSeconds) {
         ExpectedCondition<Boolean> expectation = driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
         try {
             WebDriverWait wait = new WebDriverWait(Driver.get(), timeOutInSeconds);
@@ -143,9 +135,7 @@ public class BrowserUtils {
         }
         return listOfStrings;
     }
-    /**
-     * Verifies whether the element matching the provided locator is displayed on page
-     */
+
     public static void verifyElementDisplayed(By by) {
         try {
             Assert.assertTrue("Element not visible: " + by, Driver.get().findElement(by).isDisplayed());
@@ -155,9 +145,6 @@ public class BrowserUtils {
         }
     }
 
-    /**
-     * Verifies whether the element matching the provided locator is NOT displayed on page
-     */
     public static void verifyElementNotDisplayed(By by) {
         try {
             Assert.assertFalse("Element should not be visible: " + by, Driver.get().findElement(by).isDisplayed());
@@ -167,36 +154,25 @@ public class BrowserUtils {
         }
     }
 
-
-    /**
-     * Verifies whether the element is displayed on page
-     */
     public static void verifyElementDisplayed(WebElement element) {
         try {
             Assert.assertTrue("Element not visible: " + element, element.isDisplayed());
         } catch (NoSuchElementException e) {
             e.printStackTrace();
             Assert.fail("Element not found: " + element);
-
         }
     }
 
-    /**
-     * Scrolls down to an element using JavaScript
-     *
-     * @param element
-     */
     public static void scrollToElement(WebElement element) {
         ((JavascriptExecutor) Driver.get()).executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
-    /**
-     * Performs double click action on an element
-     *
-     * @param element
-     */
     public static void doubleClick(WebElement element) {
         new Actions(Driver.get()).doubleClick(element).build().perform();
+    }
+
+    public static String getText(WebElement element){
+        return element.getText();
     }
 
 }

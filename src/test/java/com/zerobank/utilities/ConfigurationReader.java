@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class ConfigurationReader {
-    //ConfigurationReader.configFile.getProperty("browser") direct access
-    //ConfigurationReader.getProperty("browser")
     //this class will be responsible for loading properties file and will provide access
     //to values based on key names
     //we use Properties class to load custom .properties files
@@ -16,12 +14,8 @@ public class ConfigurationReader {
             //provides access to file
             //try/catch block stands for handling exceptions
             //if exception occurs, code inside a catch block will be executed
-            //any class that is related to InputOutput produce checked exceptions
-            //without handling checked exception, you cannot run a code
             FileInputStream fileInputStream = new FileInputStream("configuration.properties");
-            //initialize properties object
             configFile = new Properties();
-            //load configuration.properties file
             configFile.load(fileInputStream);
             fileInputStream.close();
         } catch (IOException e) {

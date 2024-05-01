@@ -20,7 +20,6 @@ public class Driver {
 
     }
     public static WebDriver get(){
-        // if webdriver object was not crated yet
         if(driver == null){
             //create webdriver object based on browser value from properties file
             String browser = ConfigurationReader.getProperty("browser");
@@ -73,7 +72,6 @@ public class Driver {
         if(driver != null){
             //close all browser
             driver.quit();
-            //destroy driver object ready for go
             driver = null;
 
         }
