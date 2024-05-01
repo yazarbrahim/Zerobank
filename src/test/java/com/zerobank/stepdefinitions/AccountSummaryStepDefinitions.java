@@ -27,12 +27,20 @@ public class AccountSummaryStepDefinitions {
 
     @Then("User Should see that account types are displayed")
     public void user_Should_see_that_account_types_are_displayed(List<String> dataTable) {
-        System.out.println(dataTable);
         BrowserUtils.waitForPageToLoad(10);
         accountSummaryPage.getAccountTypesNames();
         int text = accountSummaryPage.getAccountTypesNames().size();
-        System.out.println(text);
+        System.out.println("There are " + text + " Account types display --> " + dataTable);
         Assert.assertEquals(dataTable, accountSummaryPage.getAccountTypesNames());
+    }
+    @Then("User should see following credit accounts columns")
+    public void user_should_see_following_credit_accounts_columns(List<String> expectedCreditAccountColumns) {
+        List<String> actualList = accountSummaryPage.getCreditAccountsColumnsTexts();
+        accountSummaryPage.getCreditAccountsColumnsTexts();
+        int CreditNames = accountSummaryPage.getCreditAccountsColumnsTexts().size();
+        System.out.println("There are " + CreditNames + " Credit names display --> " + expectedCreditAccountColumns);
+        Assert.assertEquals(expectedCreditAccountColumns, actualList);
+
     }
 
     @Then("Account tables must have displayed on the columns")

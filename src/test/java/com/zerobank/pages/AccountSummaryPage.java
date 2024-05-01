@@ -12,21 +12,18 @@ public class AccountSummaryPage extends BasePage {
     public WebElement CashAccountsElement;
     @FindBy(xpath = "//*[text() = 'Account Summary']")
     public WebElement AccountSummaryElement;
-
     @FindBy(xpath = "//*[text() = 'Investment Accounts']")
     public WebElement InvestmentAccountsElemenent;
-
     @FindBy(xpath = "//*[text() = 'Credit Accounts']")
     public WebElement CreditAccountsElement;
-
     @FindBy(xpath = "//*[text() = 'Loan Accounts']")
     public WebElement LoanAccountsElement;
-
     @FindBy(css = "[class = 'board-header']")
     public List<WebElement> accountTypes;
-
     @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[2]/div/div/div[3]/div/table/thead")
     public List<WebElement> accountTablesColumnsElement;
+    @FindBy(xpath = "(//table)[3]//th")
+    public List<WebElement> creditAccountsColumns;
 
     public void pageTitle() {
         Driver.get().getTitle();
@@ -48,6 +45,9 @@ public class AccountSummaryPage extends BasePage {
 
     public List<String> getAccountTablesColumns() {
         return BrowserUtils.getListOfString(accountTablesColumnsElement);
+    }
+    public List<String> getCreditAccountsColumnsTexts() {
+        return BrowserUtils.getListOfString(creditAccountsColumns);
     }
 
 }

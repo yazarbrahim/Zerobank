@@ -10,17 +10,12 @@ public class AccountActivityPage extends BasePage {
 
     @FindBy(xpath = "//*[@id='onlineBankingMenu']/div/strong")
     public WebElement OnlineBankingElement;
-
     @FindBy(xpath = "//span [@ id='account_activity_link']")
     public WebElement accountActivityElement;
-
     @FindBy(id = "aa_accountId")
     public WebElement SelectElement;
-
-
     @FindBy(css = "[value = '1']")
     public WebElement savingsElement;
-
     @FindBy(id = "aa_accountId")
     public WebElement list;
 

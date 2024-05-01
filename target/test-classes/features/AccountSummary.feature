@@ -23,13 +23,13 @@ Feature: Account summary
       | Investment Accounts |
       | Credit Accounts     |
       | Loan Accounts       |
+    And User should see following credit accounts columns
+      | Account             |
+      | Credit Card         |
+      | Balance             |
+
 
   @account_tables_columns
   Scenario: Verifies Credit Accounts tables must have columns Account, Credit Card and Balance.
     Then Account tables must have displayed on the columns
       | Account Credit Card Balance |
-
-#  @account_tables_columns failed
-#  Scenario: Verifies Credit Accounts tables must have columns Account, Credit Card and Balance.
-#    Then Account tables must have "[Account Credit Card Balance]" displayed on the columns
-#
