@@ -21,7 +21,7 @@ Feature: Testing Account Activity Page
     Then User click the drop-down arrow
     And All options "Savings", "Checking", "Savings", "Loan", "Credit Card", "Brokerage", are displayed
 
-    @account_activity_types
+  @account_activity_types
   Scenario: Account types
     Then The user should be able to see "Savings" account type as default
     And The user should be able to see following account types at the drop down menu

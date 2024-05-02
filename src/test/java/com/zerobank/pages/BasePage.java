@@ -87,6 +87,11 @@ public class BasePage {
     public void waitForPageSubTitle(String pageSubtitleText) {
         new WebDriverWait(Driver.get(), 10).until(ExpectedConditions.textToBe(By.cssSelector("h1[class='oro-subtitle']"), pageSubtitleText));
     }
-
+    public void navigateBetweenPages(String tab){
+        Actions actions = new Actions(Driver.get());
+        WebElement pageTab = Driver.get().findElement(By.linkText(tab));
+        actions.moveToElement(pageTab).pause(200).click().perform();
+        BrowserUtils.wait(5);
+    }
 
 }

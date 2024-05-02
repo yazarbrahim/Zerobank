@@ -62,7 +62,9 @@ public class PayBillsStepDefinitions {
 
     @When("User clicks the {string} button")
     public void user_clicks_the_button(String string) {
+        BrowserUtils.wait(2);
         payBillsPage.clickPayButton();
+        BrowserUtils.wait(2);
     }
 
     @When("{string} displayed")
