@@ -12,7 +12,7 @@ Feature: Pay bills page activities
   Scenario: Account Activity page should have the title Zero – Pay Bills.
     Then Page Title should be "Zero - Pay Bills"
 
-  @pay_op
+  @pay_op @demo
   Scenario: user completes a successful Pay operation, The payment was successfully submitted
     Then User select the Payee
     Then User select the account
@@ -32,7 +32,7 @@ Feature: Pay bills page activities
     When User clicks the pay button
     And "Please fill out this field." message displayed
 
-  @entering_without_date
+  @entering_without_date @demo
   Scenario: Payment without entering the date
     Then User select the Payee
     Then User select the account

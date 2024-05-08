@@ -2,13 +2,11 @@ package com.zerobank.stepdefinitions;
 import com.zerobank.pages.PurchaseForeignCurrencyPage;
 import com.zerobank.utilities.BrowserUtils;
 import com.zerobank.utilities.Driver;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Alert;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class PurchaseForeignCurrencyStepDefinitions {
 

@@ -1,5 +1,4 @@
 package com.zerobank.pages;
-
 import com.zerobank.utilities.BrowserUtils;
 import com.zerobank.utilities.Driver;
 import org.openqa.selenium.By;
@@ -17,15 +16,6 @@ public class BasePage {
         PageFactory.initElements(Driver.get(), this);
     }
 
-    /**
-     * While this loading screen present, html code is a not complete
-     * Some elements can be missing
-     * Also, you won't be able to interact with any elements
-     * All actions will be intercepted
-     * Waits until loader mask (loading bar, spinning wheel) disappears
-     *
-     * @return true if loader mask is gone, false if something went wrong
-     */
     public boolean waitUntilLoaderMaskDisappear() {
         WebDriverWait wait = new WebDriverWait(Driver.get(), 20);
         try {
@@ -34,37 +24,24 @@ public class BasePage {
         } catch (NoSuchElementException e) {
             System.out.println("Loader mask not found!");
             e.printStackTrace();
-            return true; // no loader mask, all good, return true
+            return true;
         } catch (WebDriverException e) {
             e.printStackTrace();
         }
         return false;
     }
 
-    /**
-     * This method stands for navigation in vytrack app
-     * provide tab name, for example "Fleet" as a String
-     * and module name, for example "Vehicles" as a String as well
-     * then based on these values, locators will be created
-     *
-     * @param moduleName
-     * @param subModuleName normalize-space() same line .trim() in java
-     */
     public void navigateTo(String moduleName, String subModuleName) {
         Actions actions = new Actions(Driver.get());
         String moduleLocator = "//*[normalize-space()='" + moduleName + "' and @class='title title-level-1']";
         String subModuleLocator = "//*[normalize-space()='" + subModuleName + "' and @class='title title-level-2']";
-
         WebDriverWait wait = new WebDriverWait(Driver.get(), 25);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(moduleLocator)));
-
         WebElement module = Driver.get().findElement(By.xpath(moduleLocator));
         wait.until(ExpectedConditions.visibilityOf(module));
         wait.until(ExpectedConditions.elementToBeClickable(module));
-
         waitUntilLoaderMaskDisappear();
-        BrowserUtils.clickWithWait(module); //if click is not working well
-
+        BrowserUtils.clickWithWait(module);
         WebElement subModule = Driver.get().findElement(By.xpath(subModuleLocator));
         if (!subModule.isDisplayed()) {
             actions.doubleClick(module).doubleClick().build().perform();
@@ -75,14 +52,9 @@ public class BasePage {
                 BrowserUtils.clickWithJS(module);
             }
         }
-        BrowserUtils.clickWithWait(subModule); //if click is not working well
-        //it waits until page is loaded and ajax calls are done
+        BrowserUtils.clickWithWait(subModule);
         BrowserUtils.waitForPageToLoad(10);
     }
-
-    /**
-     * @return page name, for example: Dashboard
-     */
 
     public void waitForPageSubTitle(String pageSubtitleText) {
         new WebDriverWait(Driver.get(), 10).until(ExpectedConditions.textToBe(By.cssSelector("h1[class='oro-subtitle']"), pageSubtitleText));

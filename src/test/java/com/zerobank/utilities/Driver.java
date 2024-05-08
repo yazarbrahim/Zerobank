@@ -1,5 +1,4 @@
 package com.zerobank.utilities;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
@@ -21,7 +20,6 @@ public class Driver {
     }
     public static WebDriver get(){
         if(driver == null){
-            //create webdriver object based on browser value from properties file
             String browser = ConfigurationReader.getProperty("browser");
             switch (browser){
                 case "chrome":
@@ -68,9 +66,7 @@ public class Driver {
     }
 
     public static void close(){
-        // if driver still exist
         if(driver != null){
-            //close all browser
             driver.quit();
             driver = null;
 

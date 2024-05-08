@@ -9,13 +9,11 @@ import org.openqa.selenium.By;
 
 public class LoginStepDefinitions {
     LoginPage loginPage = new LoginPage();
-    String actualMessage;
 
     @Given("User is on main page")
     public void user_is_on_main_page() {
         Driver.get().get(ConfigurationReader.getProperty("url"));
     }
-
     @When("User click the {string} button")
     public void user_click_the_button(String string) {
         loginPage.signinButton();

@@ -1,5 +1,4 @@
 package com.zerobank.pages;
-
 import com.zerobank.utilities.BrowserUtils;
 import com.zerobank.utilities.Driver;
 import org.openqa.selenium.By;

@@ -1,6 +1,4 @@
 package com.zerobank.utilities;
-
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.openqa.selenium.*;
@@ -26,17 +24,37 @@ public class BrowserUtils {
         }
     }
 
-    public static void back (){
-        WebDriver driver = null;
-        driver.navigate().back();
-    }
-
     public static List<String> getElementsText(List<WebElement> list) {
         List<String> elemTexts = new ArrayList<>();
         for (WebElement el : list) {
             elemTexts.add(el.getText());
         }
         return elemTexts;
+    }
+
+    public static void clickWithJS(WebElement element) {
+        ((JavascriptExecutor) Driver.get()).executeScript("arguments[0].scrollIntoView(true);", element);
+        ((JavascriptExecutor) Driver.get()).executeScript("arguments[0].click();", element);
+    }
+
+    public static void waitForPageToLoad(long timeOutInSeconds) {
+        ExpectedCondition<Boolean> expectation = driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
+        try {
+            WebDriverWait wait = new WebDriverWait(Driver.get(), timeOutInSeconds);
+            wait.until(expectation);
+        } catch (Throwable error) {
+            error.printStackTrace();
+        }
+    }
+
+    public static void waitForPageTitle(String pageTitle) {
+        WebDriverWait wait = new WebDriverWait(Driver.get(), 10);
+        wait.until(ExpectedConditions.titleIs(pageTitle));
+    }
+
+    public static void back (){
+        WebDriver driver = null;
+        driver.navigate().back();
     }
 
     public static void waitForStaleElement(WebElement element) {
@@ -60,11 +78,6 @@ public class BrowserUtils {
     public static WebElement waitForVisibility(WebElement element, int timeToWaitInSec) {
         WebDriverWait wait = new WebDriverWait(Driver.get(), timeToWaitInSec);
         return wait.until(ExpectedConditions.visibilityOf(element));
-    }
-
-    public static void clickWithJS(WebElement element) {
-        ((JavascriptExecutor) Driver.get()).executeScript("arguments[0].scrollIntoView(true);", element);
-        ((JavascriptExecutor) Driver.get()).executeScript("arguments[0].click();", element);
     }
 
     public static WebElement waitForClickablility(WebElement element, int timeout) {
@@ -108,21 +121,6 @@ public class BrowserUtils {
                 ex.printStackTrace();
             }
         }
-    }
-
-    public static void waitForPageToLoad(long timeOutInSeconds) {
-        ExpectedCondition<Boolean> expectation = driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
-        try {
-            WebDriverWait wait = new WebDriverWait(Driver.get(), timeOutInSeconds);
-            wait.until(expectation);
-        } catch (Throwable error) {
-            error.printStackTrace();
-        }
-    }
-
-    public static void waitForPageTitle(String pageTitle) {
-        WebDriverWait wait = new WebDriverWait(Driver.get(), 10);
-        wait.until(ExpectedConditions.titleIs(pageTitle));
     }
 
     public static List<String> getListOfString(List<WebElement> listOfWebElements) {

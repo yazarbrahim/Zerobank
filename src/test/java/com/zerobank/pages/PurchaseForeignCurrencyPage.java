@@ -1,15 +1,12 @@
 package com.zerobank.pages;
 import com.zerobank.utilities.BrowserUtils;
-import com.zerobank.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
-
 import java.util.List;
 
 public class PurchaseForeignCurrencyPage extends BasePage {
     public Select select;
-
     @FindBy(xpath = "//select[@id='pc_currency']")
     public WebElement currencyDropDownMenu;
     @FindBy(id = "pc_amount")
@@ -19,12 +16,9 @@ public class PurchaseForeignCurrencyPage extends BasePage {
     @FindBy(xpath = "//a[. ='Purchase Foreign Currency']")
     public WebElement ForeignCurrencyTab;
 
-    public PurchaseForeignCurrencyPage(){
-        select = new Select(currencyDropDownMenu);
-    }
-
     public void clickForeignCurrencyButton() {
         ForeignCurrencyTab.click();
+        BrowserUtils.wait(3);
     }
 
     public List<String> getForeignCurrencyList(){

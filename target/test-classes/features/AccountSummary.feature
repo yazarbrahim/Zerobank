@@ -16,7 +16,7 @@ Feature: Account summary
   Scenario: Account summary page have following account types: Cash Accounts, Investment Accounts, Credit Accounts, Loan Accounts.
     Then User Should see "Cash Accounts", "Investment Accounts", "Credit Accounts", "Loan Accounts"
 
-  @account_types2
+  @account_types2 @demo
   Scenario: Verifies account types
     Then User Should see that account types are displayed
       | Cash Accounts       |
@@ -29,7 +29,7 @@ Feature: Account summary
       | Balance             |
 
 
-  @account_tables_columns
+  @account_tables_columns @demo
   Scenario: Verifies Credit Accounts tables must have columns Account, Credit Card and Balance.
     Then Account tables must have displayed on the columns
       | Account Credit Card Balance |

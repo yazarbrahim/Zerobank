@@ -29,7 +29,7 @@ Feature: Account summary
       | Balance             |
 
 
-  @account_tables_columns
+  @account_tables_columns @demo
   Scenario: Verifies Credit Accounts tables must have columns Account, Credit Card and Balance.
     Then Account tables must have displayed on the columns
       | Account Credit Card Balance |

@@ -4,7 +4,7 @@ Feature: Login page testing
   As a authorized user should be able to login to the application
   under with valid credentials.
 
-  @login_valid_credentials @smoke_test @login_invalid_credentials
+  @login_valid_credentials @smoke_test @login_invalid_credentials @demo
   Scenario: Login the application
     Given User is on main page
     When User click the "signing" button
@@ -37,7 +37,7 @@ Feature: Login page testing
     When Click the Keep me signed in box
     And User verifies that Keep me signed in box is clicked
 
-  @forget_your_password
+  @forget_your_password @demo
   Scenario: Click the forget your password link
     Given User is on main page
     Then User click the "signing" button
